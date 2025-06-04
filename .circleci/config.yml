@@ -29,6 +29,9 @@ jobs:
       - run:
           name: Run V2EX signin
           command: |
+            if [ -z "$TELEGRAM_TOKEN" ]; then
+              echo "TELEGRAM_TOKEN environment variable is not set. Please add it to your CircleCI context or project settings." && exit 1
+            fi
             python -m v2ex.v2ex
 
   onepoint3acres:
